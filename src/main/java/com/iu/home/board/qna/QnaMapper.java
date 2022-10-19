@@ -13,6 +13,6 @@ public interface QnaMapper {
 	
 	public List<QnaVO> getList(Pager pager)throws Exception;
 	
-	public int addQna()throws Exception;
+	public int addQna(QnaVO qnaVO)throws Exception;
 
 }
