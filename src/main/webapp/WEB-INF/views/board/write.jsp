@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 
 <c:import url="../temp/boot.jsp"></c:import>
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<c:import url="../temp/summer.jsp"></c:import>
 
 </head>
  <body>
@@ -27,8 +27,9 @@
 			</div>
 			<div class="mb-3">
 			  <label for="contents" class="form-label">Contents</label>
-			  <textarea id="summernote" name="contents"></textarea>
+			  <textarea class="form-control" id="summernote" name="contents"></textarea>
 			</div>
+
 			 
 			<div class="mb-3">
 				<label for="file" class="form-label">File</label>
@@ -43,9 +44,6 @@
 		</form>
 	</div>
 	
- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/lang/summernote-ko-KR.min.js"></script>
 
 
 <script>
@@ -56,6 +54,11 @@ $(document).ready(function () {
         maxHeight: 400
     });
 });
+
+/* $('#contents').summernote({
+    tabsize: 4,
+    height: 250
+  }); */
 </script>
 
 

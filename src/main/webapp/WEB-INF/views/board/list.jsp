@@ -12,42 +12,44 @@
 </head>
 <body>
 	<div class="container-fluid">
-	<div class="row justify-content-center">
-	<h1>List Page</h1>
-	
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th>글번호</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>작성자</th>
-				<th>조회수</th>
-				<th>작성일</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${list}" var="list">
-				<tr>
-					<td>${list.num}</td>
-					<td>${list.title}</td>
-					<td>${list.contents}</td>
-					<td>${list.writer}</td>
-					<td>${list.hit}</td>
-					<td>${list.regDate}</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
-	
-	<div>
-		<a href="./add" class="btn btn-danger">WRITE</a>
-	</div>
-	
-	<form action="./list" method="get">
-		<input name="search" value="${param.search}" type="text">
-	</form>
-	</div>
+		<div class="row justify-content-center">
+			<section class="col-6">
+			<h1>List Page</h1>
+			
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>글번호</th>
+						<th>제목</th>
+						<th>내용</th>
+						<th>작성자</th>
+						<th>조회수</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${list}" var="list">
+						<tr style="cursor: pointer;" onclick="location.href='./detail?num=${list.num}'">
+							<td>${list.num}</td>
+							<td>${list.title}</td>
+							<td>${list.contents}</td>
+							<td>${list.writer}</td>
+							<td>${list.hit}</td>
+							<td>${list.regDate}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			
+			<div>
+				<a href="./add" class="btn btn-danger">WRITE</a>
+			</div>
+			
+			<form action="./list" method="get">
+				<input name="search" value="${param.search}" type="text">
+			</form>
+			</section>
+		</div>
 	</div>
 	
 	<!-- 페이지 -->
