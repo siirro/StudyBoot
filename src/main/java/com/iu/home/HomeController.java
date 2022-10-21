@@ -17,8 +17,10 @@ import com.iu.home.util.Pager;
 @Controller
 public class HomeController {
 	
-	@Value("${my.message.hi}")
+//	@Value("${my.message.hi}")
 	private String message;
+	@Value("${my.default}")
+	private String app;
 	
 	//로거-클래스 가져오는 방법 2개!
 //	private final Logger log = LoggerFactory.getLogger(HomeController.class);
@@ -30,14 +32,11 @@ public class HomeController {
 	@GetMapping("/")
 	
 	public String home(Pager pager) throws Exception {
-		log.error("Error Message");
-		log.warn("Warn Message");
-		log.info("Info Message");
-		log.debug("Debug Message");
-		log.trace("Trace Message");
+		log.info("==========================");
+		log.info("Message : {}", message);
+		log.info("default : {}", app);
 		
-//		List<QnaVO> ar = qnaMapper.getList(pager);
-//		log.info("List : {}, size : {}", ar, ar.size());
+
 		
 		return "index";
 	}
