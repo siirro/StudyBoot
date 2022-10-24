@@ -56,7 +56,7 @@ public class QnaController {
 		redirectAttributes.addAttribute("result", result);
 		
 		log.info("result는 {}", result);
-		return "";//"redirect:./list";
+		return "redirect:./list";
 	}
 
 }
