@@ -67,17 +67,17 @@ class QnaMapperTest {
 //		assertNotEquals(0, ar.size());
 //	}
 	
-	@Test
-	@Rollback(false) //이거 주면 얘만 롤백안함
-	void addQna()throws Exception{
-		log.info("==============={} =================", app);
-		qnaVO = new QnaVO();
-		qnaVO.setTitle("Title");
-		qnaVO.setWriter("Writer");
-		qnaVO.setContents("Contents");
-		//int result = qnaMapper.addQna(qnaVO);
-		
-		assertEquals(1, 1);
-	}
+//	@Test
+//	@Rollback(false) //이거 주면 얘만 롤백안함
+//	void addQna()throws Exception{
+//		log.info("==============={} =================", app);
+//		qnaVO = new QnaVO();
+//		qnaVO.setTitle("Title");
+//		qnaVO.setWriter("Writer");
+//		qnaVO.setContents("Contents");
+//		//int result = qnaMapper.addQna(qnaVO);
+//		
+//		assertEquals(1, 1);
+//	}
 
 }
