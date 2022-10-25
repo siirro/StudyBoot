@@ -49,8 +49,8 @@
 							<td style="height: 50px">
 							
 							<c:forEach items="${detail.qnaFileVOs}" var="file">
-<%-- 	                        <img src="D:result/upload/qna/${file.fileName}" alt="" width="auto" style="cursor: pointer;" onclick="location.href='../../../../../../../../../result/upload/qna/${file.fileName}'">
- --%>	                        <img src="/file/qna/${file.fileName}" alt="" width="auto" style="cursor: pointer;" onclick="location.href='/file/qna/${file.fileName}'">
+	                        	<img src="/file/qna/${file.fileName}" alt="" width="auto" style="cursor: pointer;" onclick="location.href='/file/qna/${file.fileName}'">
+	                        	<a href="/fileDown/qna?fileNum=${file.fileNum}">${file.oriName}</a>
 	                        <br></br>
 	                        </c:forEach>
 							

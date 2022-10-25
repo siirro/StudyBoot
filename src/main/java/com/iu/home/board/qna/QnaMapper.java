@@ -11,6 +11,8 @@ import com.iu.home.util.Pager;
 @Mapper
 public interface QnaMapper {
 	
+	public QnaFileVO getFileDetail(QnaFileVO qnaFileVO)throws Exception;
+	
 	public List<QnaVO> getList(Pager pager)throws Exception;
 	
 	public QnaVO getDetail(QnaVO qnaVO)throws Exception;
