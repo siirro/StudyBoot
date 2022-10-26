@@ -5,6 +5,10 @@
 	
 <mapper namespace="com.iu.home.member.MemberMapper">
 
+<select id="getIdCheck" parameterType="MemberVO" resultType="MemberVO">
+SELECT * FROM MEMBER WHERE ID = #{id}
+</select>
+
 <select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
 SELECT * 
 FROM MEMBER M

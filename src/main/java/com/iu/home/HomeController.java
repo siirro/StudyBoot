@@ -35,7 +35,7 @@ public class HomeController {
 	
 	@GetMapping("/")
 	
-	public ModelAndView home(Pager pager, HttpSession session) throws Exception {
+	public ModelAndView home(Pager pager) throws Exception {
 		log.info("==========================");
 		log.info("Message : {}", message);
 		log.info("default : {}", app);
