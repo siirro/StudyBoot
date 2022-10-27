@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -25,6 +26,27 @@ public class QnaController {
 	
 	@Autowired
 	private QnaService qnaService;
+	
+	@PostMapping("fileDelete")
+	@ResponseBody
+	public int setDeleteFile(QnaFileVO qnaFileVO)throws Exception{
+		int result = qnaService.setDeleteFile(qnaFileVO);
+		return result;
+	}
+	
+	@GetMapping("update")
+	public ModelAndView setUpdate(ModelAndView mv, QnaVO qnaVO)throws Exception{
+		qnaVO = qnaService.getDetail(qnaVO);
+		mv.addObject("vo", qnaVO);
+		mv.setViewName("board/update");
+		return mv;
+	}
+	
+	@PostMapping("update")
+	public String setUpdate(QnaVO qnaVO)throws Exception{
+		int result = qnaService.setUpdate(qnaVO);
+		return "redirect:./detail?num="+qnaVO.getNum();
+	}
 	
 	@GetMapping("list")
 	public ModelAndView getList(Pager pager)throws Exception{

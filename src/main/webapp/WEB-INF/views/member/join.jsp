@@ -53,6 +53,14 @@
 		</form>
 	</div>
 
+	<!-- 포스트 버튼 -->
+	<div>
+		<button type="button" id="test">Post Test</button>
+		<button type="button" id="test2">Ajax Get Test</button>
+		<button type="button" id="test3">Ajax Post Test</button>
+
+	</div>
+
 	<!-- 약관 test -->
 	<div class="row justify-content-center mt-5">
 		<div>
@@ -79,6 +87,14 @@
 				약관3의 내용
 			</div>
 		</div>
+	</div>
+
+	<div>
+		<select id="s1">
+			<option>1</option>
+			<option>2</option>
+		</select>
+		<button type="button" id="s1Add">Add</button>
 	</div>
 	
 

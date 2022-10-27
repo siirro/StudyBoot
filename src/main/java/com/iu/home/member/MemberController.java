@@ -11,25 +11,51 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.MvcNamespaceHandler;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
 @RequestMapping("/member/*")
+@Slf4j
 public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
 	
-	@PostMapping("idCheck")
+	@PostMapping("test")
+	@ResponseBody
+	public MemberVO setTest(MemberVO memberVO)throws Exception{
+		// , String [] ar 매개변수 잠깐뺌
+		log.info("===================");
+		log.info("ID : {}", memberVO.getId());
+		log.info("Name : {}", memberVO.getName());
+		
+//		for(String s : ar) {
+//			log.info("ar : {}", s);
+//		}
+		
+		return memberVO;
+		
+		
+	}
+	
+	@GetMapping("idCheck")
 	@ResponseBody
 	public int getIdCheck(MemberVO memberVO)throws Exception{
-		memberVO = memberService.getIdCheck(memberVO);
-		int result = 0;
 		
-		if(memberVO!=null) {
-			result = 1;
-		}else {
-			result = 0;
-		}
+		int result = memberService.getIdCheck(memberVO);
+		
+//		if(result == 0) {
+//			throw new Exception("테스트 익셉션이야");
+//		}
+		
 		return result;
+		
+//		if(memberVO!=null) {
+//			result = 1;
+//		}else {
+//			result = 0;
+//		}
+//		return result;
 	}
 	
 	@GetMapping("logout")

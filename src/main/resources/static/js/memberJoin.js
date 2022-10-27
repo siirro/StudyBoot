@@ -34,8 +34,21 @@ let results = [false, false, false, false, false];
 
 // ID Check
 $("#id").keyup(function(){
-    let result = nullCheck($("#id").val(), "#idLabel", "ID");
+    let id = $("#id").val();
+    let result = nullCheck(id, "#idLabel", "ID");
     results[0]=result;
+    console.log(result)
+    //단 id가 비어있지 않을 때
+    $.get("./idCheck?id="+id, function(data){
+        console.log("Data : ", data);
+        if(data=='0'){
+            $("#idLabel").html("사용가능한 ID");
+            results[0]=true;
+        }else {
+            $("#idLabel").html("이미 사용중인 ID 입니다");
+            results[0]=false;
+        }
+    })
 });
 
 $("#pw").on({
@@ -135,31 +148,76 @@ $("#joinButton").click(function(){
 });
 
 
-idCheck.addEventListener("click",function(){
-    console.log("중복확인")
-    let userID = user_id.value;
-    //1.XMLHTTPRequest 생성
-    const xhttp = new XMLHttpRequest();
-    //2.method,url 요청정보
-    xhttp.open("POST","./ajaxID");
-    //3.Enctype
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    //4.post 파라미터 전송
-    xhttp.send("user_id="+userID);
-    //5.요청발생
-    xhttp.onreadystatechange=function(){
-        if(xhttp.readyState==4 && xhttp.status==200){
-            console.log(userID);
-            console.log(xhttp.responseText);
-            let result = xhttp.responseText.trim();
 
-            if(result == 1){
-                id_check.innerHTML ="중복된 아이디 입니다.";
-                user_id.focus();
-            }else{
-                id_check.innerHTML = "사용 가능한 아이디 입니다.";
-            }
 
+
+
+// JqueryAjax 브랜치에 있어야할것들.. 인데 나는 마스터에다가 걍함 221027
+
+$("#test").click(function(){
+    let id="123";
+    let name="iu";
+
+    $.post("./test", {
+        id: id,
+        name: name
+    },function(result){
+        console.log("Result : ", result);
+        // "{키:밸류}"
+        // 
+        // result = JSON.parse(result);
+        console.log("Name : ", result.name);
+    });
+});
+
+$("#test2").click(function(){
+    let id = "abcd";
+    $.ajax({
+        type: "GET",
+        url: "idCheck",
+        data:{
+            id:id
+        },
+        success:function(data){
+            console.log("Data : ", data);
+        },
+        error:function(xhr, status, error){
+            console.log("Xhr : ", xhr);
+            console.log("Status : ", status);
+            console.log("Error : ", error);
         }
-    }
-})//ajaxID
+    })
+});
+
+$("#test3").click(function(){
+    let id = "1234";
+    let name = "iu";
+    let ar = [1, 2, 3];
+    $.ajax({
+        type: "POST",
+        url: "test",
+        traditional:true, //배열을 전송할 때 사용, true 주면 끝.
+        data: {
+            id: id,
+            name: name,
+            ar: ar
+        },
+        success:function(result){
+            console.log("result : ", result);
+        }
+    });
+});
+let count = 3;
+$("#s1Add").click(function(){
+    console.log(count);
+    let add = '<option class="abc" id="abc'+count+'">'+count+'</option>';
+    $("#s1").append(add);
+    count++;
+    console.log(count);
+
+});
+
+$("#s1").click(function(){
+    $("#s1").empty();
+});
+
