@@ -10,62 +10,48 @@
 
 <c:import url="../temp/boot.jsp"></c:import>
 <script defer src="/js/util.js"></script>
-<!-- <script defer src="/js/memberJoin.js"></script> -->
+<script defer src="/js/memberJoin.js"></script>
 </head>
 <body>
 	<h1>Join page</h1>
 	
 	<div style="display: flex;">
-		<div style="margin-left: 15px;">
-		<form:form modelAttribute="memberVO" method="post">
-		<%-- <form action="./add" method="post" id="joinForm" style="margin-left: 15px;"> --%>
+		<form action="./add" method="post" id="joinForm" style="margin-left: 15px;">
 			
 			<div class="mb-3">
 				<label for="id" class="form-label">ID</label>
-				<form:input path="id" cssClass="form-control" id="id" placeholder="아이디를 입력하세요"/>
-				<form:errors path="id"></form:errors>
+				<div style="display: flex;">
+				<input type="text" name="id" class="form-control" id="id" value="" placeholder="아이디를 입력하세요">
+
+				<button class="btn btn-danger" type="button" id="idCheck">중복확인</button>
+
+				</div>
 				<label for="id" class="form-label" id="idLabel"></label>
 			</div>
 			<div class="mb-3">
 				<label for="pw" class="form-label">PW</label>
-				<form:password path="pw" cssClass="form-control" id="pw" placeholder="비밀번호를 입력하세요"/>
-				<form:errors path="pw"></form:errors>
+				<input type="password" name="pw" class="form-control" id="pw" placeholder="비밀번호를 입력하세요">
 				<label for="pw" class="form-label" id="pwLabel"></label>
 
 			</div>
 			<div class="mb-3">
 				<label for="pwCheck" class="form-label">PW</label>
-				<form:password path="pwCheck" cssClass="form-control" id="pwCheck" placeholder="비밀번호를 다시 입력해주세요"/>
-				<form:errors path="pwCheck"></form:errors>
+				<input type="password" class="form-control" id="pwCheck" placeholder="비밀번호를 입력하세요">
 				<label for="pwCheck" class="form-label" id="pwCheckLabel"></label>
 			</div>
 			<div class="mb-3">
 				<label for="name" class="form-label">NAME</label>
-				<form:input path="name" cssClass="form-control" id="name" placeholder="이름을 입력하세요"/>
-				<form:errors path="name"></form:errors>
+				<input type="text" name="name" class="form-control" id="name" placeholder="이름을 입력하세요">
 				<label for="name" class="form-label" id="nameLabel"></label>
 			</div>
 			<div class="mb-3">
 				<label for="email" class="form-label">EMAIL</label>
-				<form:input path="email" cssClass="form-control" id="email" placeholder="이메일을 입력하세요"/>
-				<form:errors path="email"></form:errors>
+				<input type="email" name="email" class="form-control" id="email" placeholder="이메일 주소를 입력하세요">
 				<label for="email" class="form-label" id="emailLabel"></label>
+
 			</div>
-			<div class="mb-3">
-				<label for="age" class="form-label">AGE</label>
-				<form:input path="age" cssClass="form-control" id="age" placeholder="나이를 입력하세요"/>
-				<form:errors path="age"></form:errors>
-				<label for="age" class="form-label" id="ageLabel"></label>
-			</div>
-			<div class="mb-3">
-				<label for="birth" class="form-label">BIRTH</label>
-				<form:input path="birth" cssClass="form-control" id="birth" placeholder="생일을 입력하세요"/>
-				<form:errors path="birth"></form:errors>
-				<label for="birth" class="form-label" id="birthLabel"></label>
-			</div>
-			<button type="submit" id="joinButton" class="btn btn-primary">회원가입</button>
-		</form:form>
-		</div>
+			<button type="button" id="joinButton" class="btn btn-primary">회원가입</button>
+		</form>
 	</div>
 
 	<!-- 포스트 버튼 -->

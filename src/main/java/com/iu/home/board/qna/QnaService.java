@@ -62,19 +62,12 @@ public class QnaService {
 	
 	public int addQna(QnaVO qnaVO)throws Exception{
 		int result = qnaMapper.addQna(qnaVO);
-		
 		File file = new File(path);
 		
 		if(!file.exists()) {
 			boolean check = file.mkdirs();
 		}
-		
 		for(MultipartFile f : qnaVO.getFiles()) {
-//			if(f.isEmpty()) {
-//				log.info("--------- Exception 발생 -------- ");
-//				throw new Exception();
-//			}
-			
 			if(!f.isEmpty()) {
 				log.info("FileName은 {} ",f.getOriginalFilename());
 				String fileName = fileManager.saveFile(f, path);
@@ -85,7 +78,6 @@ public class QnaService {
 				qnaMapper.addQnaFile(qnaFileVO);
 			}
 		}
-		
 		return result;
 	}
 

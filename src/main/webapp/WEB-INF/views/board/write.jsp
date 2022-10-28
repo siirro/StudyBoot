@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+
 
 <!DOCTYPE html>
 <html>
@@ -17,10 +19,12 @@
 	<h1>Board Write Page</h1>
 	
 	<div>
-		<form action="add" method="post" enctype="multipart/form-data">
+		<form:form modelAttribute="qnaVO" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
 				<label for="title" class="form-label">Title</label>
-				<input name="title" type="text" class="form-control" id="title" placeholder="제목을 입력하세요">
+				<form:input path="title" cssClass="form-control" id="title" placeholder="제목을 입력하세요"/>
+				<form:errors path="title"></form:errors>
+				<!-- <input name="title" type="text" class="form-control" id="title" placeholder="제목을 입력하세요"> -->
 			</div>
 			<div class="mb-3">
 				<label for="writer" class="form-label">Writer</label>
@@ -48,7 +52,7 @@
 			</div> -->
 			
 			<button class="btn btn-primary" type="submit">작성</button>
-		</form>
+		</form:form>
 	</div>
 	
 
