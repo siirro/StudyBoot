@@ -9,14 +9,14 @@
 SELECT COUNT(ID) FROM MEMBER WHERE ID = #{id}
 </select>
 
-<select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
+<select id="getLogin" parameterType="String" resultMap="getLoginResult">
 SELECT * 
 FROM MEMBER M
 INNER JOIN MEMBER_ROLE MR
 ON M.ID = MR.ID
 INNER JOIN ROLE R
 ON MR.NUM = R.NUM
-WHERE M.ID = #{id} AND M.PW = #{pw}
+WHERE M.ID = #{username}
 </select>
 
 <resultMap type="MemberVO" id="getLoginResult">

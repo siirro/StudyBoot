@@ -42,8 +42,8 @@
 			<div class="mb-3">
 				<label for="name" class="form-label">NAME</label>
 				<form:input path="name" cssClass="form-control" id="name" placeholder="이름을 입력하세요"/>
-				<form:errors path="name"></form:errors>
-				<label for="name" class="form-label" id="nameLabel"></label>
+				<!-- <form:errors path="name"></form:errors> -->
+				<label for="name" class="form-label" id="nameLabel">라벨!${name}</label>
 			</div>
 			<div class="mb-3">
 				<label for="email" class="form-label">EMAIL</label>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,18 +20,32 @@
 
 	<div style="display: flex;">
 		<div>
-			<c:if test="${empty member}">
-				<a class="btn btn-info" href="./member/login">로그인</a>
-				<a class="btn btn-info" href="./member/add">회원가입</a>
-			</c:if>
-			<c:if test="${not empty member}">
+			<!-- 로그인 전 -->
+			<sec:authorize access="!isAuthenticated()">
+			<a class="btn btn-info" href="./member/login">로그인</a>
+			<a class="btn btn-info" href="./member/add">회원가입</a>
+			</sec:authorize>
+			
+			<!-- 로그인 성공 -->
+			<sec:authorize access="isAuthenticated()">
+				<sec:authentication property="Principal" var="member"/>
 				<h3><spring:message code="welcome" arguments="${member.id}"></spring:message></h3>
 				<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
 				<h3>${member.roleVOs[0].roleName}등급입니다</h3>
-				<a class="btn btn-danger" href="./member/logout">로그아웃</a>
 				<a class="btn btn-primary" href="./member/mypage">마이페이지</a>
-
-			</c:if>
+				<a class="btn btn-danger" href="./member/logout">로그아웃</a>
+				
+				
+			</sec:authorize>
+			
+			<%-- <sec:authorize access="hasRole('ADMIN')"> --%>
+			<sec:authorize url="/admin">
+				<a href="/admin">Go ADMIN</a>
+			</sec:authorize>
+			
+			<sec:authorize access="hasAnyRole('ADMIN', 'MANAGER')">
+				<a href="/manager">Go Manager</a>
+			</sec:authorize>
 		</div>
 	</div>
 
