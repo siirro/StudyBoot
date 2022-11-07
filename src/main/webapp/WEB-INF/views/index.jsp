@@ -23,6 +23,7 @@
 			<!-- 로그인 전 -->
 			<sec:authorize access="!isAuthenticated()">
 			<a class="btn btn-info" href="./member/login">로그인</a>
+			<a class="btn btn-primary" href="/oauth2/authorization/kakao">Kakao Login</a>
 			<a class="btn btn-info" href="./member/add">회원가입</a>
 			</sec:authorize>
 			
@@ -33,7 +34,11 @@
 				<h3><spring:message code="welcome2" arguments="${member.id},${member.name}" argumentSeparator=","></spring:message></h3>
 				<h3>${member.roleVOs[0].roleName}등급입니다</h3>
 				<a class="btn btn-primary" href="./member/mypage">마이페이지</a>
-				<a class="btn btn-danger" href="./member/logout">로그아웃</a>
+				<form id="outForm" action="./member/logout" method="post">
+					<sec:csrfInput/>
+					<button>csrf Logout</button>
+				</form>
+				<a class="btn btn-danger" href="./member/logout" id="logout">로그아웃</a>
 				
 				
 			</sec:authorize>
@@ -68,6 +73,10 @@
 
 <script type="text/javascript">
 document.getElementById("id1").addEvent
+
+/* 	$("#logout").click(function() {
+		$("#outForm").submit();
+	}) */
 </script>
 </body>
 </html>

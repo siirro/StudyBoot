@@ -11,7 +11,6 @@
 </head>
 <body>
 	<h1>login page</h1>
-	
 	<div>
 		<h3 style="color: red;">${param.error}</h3>
 		<h3 style="color: red;">${param.message}</h3>
@@ -21,6 +20,7 @@
 	
 	<div style="display: flex;">
 		<form action="./login" method="post" style="margin-left: 15px;">
+			<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 			<div class="mb-3">
 				<label for="id" class="form-label">ID</label>
 				<input type="text" value="${cookie.userId.value}" name="id" class="form-control" id="id" placeholder="아이디를 입력하세요">
@@ -32,6 +32,10 @@
 			<div class="mb-3 form-check">
 				<input type="checkbox" name="rememberId" class="form-check-input" id="rememberId">
 				<label for="rememberId" class="form-check-label">ID 기억하기</label>
+			</div>
+			<div class="mb-3 form-check">
+				<input type="checkbox" name="rememberMe" class="form-check-input" id="rememberMe">
+				<label for="rememberMe" class="form-check-label">자동 로그인</label>
 			</div>
 			
 			<button type="submit" class="btn btn-primary">로그인</button>

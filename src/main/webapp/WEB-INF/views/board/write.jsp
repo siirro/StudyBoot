@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 
 <!DOCTYPE html>
@@ -20,6 +21,7 @@
 	
 	<div>
 		<form:form modelAttribute="qnaVO" method="post" enctype="multipart/form-data">
+			<sec:csrfInput/>
 			<div class="mb-3">
 				<label for="title" class="form-label">Title</label>
 				<form:input path="title" cssClass="form-control" id="title" placeholder="제목을 입력하세요"/>
